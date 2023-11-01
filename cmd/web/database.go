@@ -6,4 +6,18 @@ type databaseConn struct {
 	DB *sql.DB
 }
 
-// func (db *databaseConn)
+func (db *databaseConn) create() {
+
+}
+
+func (db *databaseConn) read() {
+
+}
+
+func (db *databaseConn) update() {
+
+}
+
+func (db *databaseConn) delete() {
+
+}
