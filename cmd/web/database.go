@@ -25,8 +25,8 @@ func (db *databaseConn) deleteTask() {
 
 }
 
-func (db *databaseConn) createUser(userName string, email string, password string, fName string, lName string, avatarURL string, app *application) {
-	sqlQuery := "INSERT INTO users(Username, Email, Password, FirstName, LastName, AvatarURL) VALUES (?, ?, ?, ?, ?, ?)"
+func (db *databaseConn) createUser(userName string, email string, password string, fName string, lName string, avatarURL string, app *application) int {
+	sqlQuery := "INSERT INTO Users(Username, Email, Password, FirstName, LastName, AvatarURL) VALUES (?, ?, ?, ?, ?, ?)"
 
 	exec, err := db.DB.Exec(sqlQuery, userName, email, password, lName, fName, avatarURL)
 	if err != nil {
@@ -37,6 +37,7 @@ func (db *databaseConn) createUser(userName string, email string, password strin
 		app.errorLog.Fatal(err.Error())
 	}
 	fmt.Println(rowsAffected)
+	return int(rowsAffected)
 }
 
 func (db *databaseConn) updateUser() {
