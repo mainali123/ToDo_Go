@@ -7,9 +7,9 @@ import (
 )
 
 // errorHandler is a helper function to handle errors
-func (app *application) errorHandler(err error) {
-	app.errorLog.Fatal(err.Error())
-}
+//func (app *application) errorHandler(err error) {
+//	app.errorLog.Fatal(err.Error())
+//}
 
 func (app *application) serverError(w http.ResponseWriter, err error) {
 	trace := fmt.Sprintf("%s\n%s", err.Error(), debug.Stack())
