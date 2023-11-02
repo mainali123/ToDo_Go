@@ -29,9 +29,13 @@ func (db *databaseConn) createUser(userName string, email string, password strin
 	sqlQuery := "INSERT INTO users(Username, Email, Password, FirstName, LastName, AvatarURL) VALUES (?, ?, ?, ?, ?, ?)"
 
 	exec, err := db.DB.Exec(sqlQuery, userName, email, password, lName, fName, avatarURL)
-	app.errorHandler(err)
+	if err != nil {
+		app.errorLog.Fatal(err.Error())
+	}
 	rowsAffected, err := exec.RowsAffected()
-	app.errorHandler(err)
+	if err != nil {
+		app.errorLog.Fatal(err.Error())
+	}
 	fmt.Println(rowsAffected)
 }
 
