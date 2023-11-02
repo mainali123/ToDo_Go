@@ -1,0 +1,6 @@
+@import '../css/style.css';
+
+body{
+    display: flex;
+    flex-direction: row;
+}
