@@ -1,15 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>LogIn</title>
-</head>
-<body>
-<h1>
-    LogIn Page
-</h1>
+  </head>
+  <body>
+    <div class="left-side">
+      <div class="top">
+        <img src="../images/logo.png" alt="TODO logo" class="logo" />
+        <p class="title">TODO App</p>
+      </div>
 
-
-
-</body>
+      
+      <form action="" class="form">
+          <h1>LogIn To your account</h1>
+          <input
+          type="text"
+          name="Email"
+          id="Email"
+          placeholder="Email"
+          class="email"
+          required
+        />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          class="password"
+        />
+        <img src="../images/eye-solid.svg" alt="show-password" id="showpass" />
+      </form>
+      <a href="index.html" class="btn button" id="login">Log In</a>
+    </div>
+    <div class="right-side">
+      <p class="no-id">Don't have an id?</p>
+      <p class="text">
+        Unlock a world of possibilities! Sign in now to access exclusive
+        content, personalized recommendations, and a seamless experience
+        tailored just for you. Don't miss out – your journey awaits behind the
+        sign-in button.
+      </p>
+      <a href="signup.html" class="btn button">signup</a>
+    </div>
+  </body>
 </html>
