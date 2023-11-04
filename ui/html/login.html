@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="shortcut icon" href="../static/images/logo.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="../static/images/logo.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" type="text/css" href="../static/css/login.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
     <title>LogIn</title>
@@ -14,10 +18,9 @@
         <p class="title">TODO App</p>
       </div>
 
-
       <form action="/login" method="post" class="form">
-          <h1>LogIn To your account</h1>
-          <input
+        <h1>LogIn To your account</h1>
+        <input
           type="text"
           name="email"
           id="Email"
@@ -32,10 +35,14 @@
           placeholder="Password"
           class="password"
         />
-        <img src="../static/images/eye-solid.svg" alt="show-password" id="showpass" />
-        <input type="submit" class="btn button" id="login" value="Submit">
+        <img
+          src="../static/images/eye-solid.svg"
+          alt="show-password"
+          id="showpass"
+        />
+        <input type="submit" class="btn button" id="login" value="Submit" />
       </form>
-<!--      <a href="index.html" class="btn button" id="login">Log In</a>-->
+      <!--      <a href="index.html" class="btn button" id="login">Log In</a>-->
     </div>
     <div class="right-side">
       <p class="no-id">Don't have an id?</p>
@@ -45,7 +52,54 @@
         tailored just for you. Don't miss out – your journey awaits behind the
         sign-in button.
       </p>
-      <a href="signup.html" class="btn button">signup</a>
+      <a href="" class="btn button singin" id="signin">signup</a>
+
+      <div class="overlay" >
+        <div class="popUp">
+          <img src="../static/images/close-modal.svg" alt="close button" class="img">
+          <form action="/signup" method="post">
+            <h2>Sign Up here</h2>
+            <input
+              type="text"
+              name="firstname"
+              placeholder="First name"
+              class="field"
+              required
+            />
+            <input
+              type="text"
+              name="lastname"
+              placeholder="last name"
+              class="field"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              class="field"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="password"
+              class="field"
+              required
+            />
+            <input
+              type="password"
+              name="password_verification"
+              placeholder="confirm password"
+              class="field"
+              required
+            />
+            <input type="submit" value="Submit"  class="btn button" />
+          </form>
+        </div>
+      </div>
     </div>
+    <script src="../static/js/index.js" defer></script>
   </body>
+
 </html>

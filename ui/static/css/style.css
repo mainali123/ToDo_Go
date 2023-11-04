@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-  --font-family: 'Lora', serif;
+  --font-family: 'Fira Sans',sans-serif;
   --Grayish-blue: hsl(237, 18%, 59%);
   --Soft-red: hsl(345, 95%, 68%);
   --White: hsl(0, 0%, 100%);
@@ -16,30 +16,33 @@
   --Very-dark-black: hsl(234, 17%, 12%);
 }
 
-
-h1{
-    padding-bottom: 2rem;
-    color: var(--Very-dark-blue);
+h1,
+h2 {
+  padding-bottom: 2rem;
+  color: var(--Very-dark-blue);
 }
 
-
-a{
-    text-decoration: none;
-    color: hsl(0, 0%, 100%);
-    font-size: 15px;
-    padding: 1.5rem;
-    margin-top: 1rem;
-    text-transform: capitalize;
-    font-weight: bold;
+h2{
+color: var(--White);
+/* font-family: var(--font-family); */
 }
 
+a {
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+  font-size: 15px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
 
-.text{
-    font-size: 15px;
-    color: var(--White);
-    font-weight: lighter;
-    padding: 0 1rem 2rem;
-    letter-spacing: 1px;
-    line-height: 1.3rem;
-    text-align: justify;
+.text {
+  font-size: 15px;
+  color: var(--White);
+  font-weight: lighter;
+  padding: 0 1rem 2rem;
+  letter-spacing: 1px;
+  line-height: 1.3rem;
+  text-align: justify;
 }
