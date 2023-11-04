@@ -1,0 +1,384 @@
+* {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    background-color: #282828;
+    color: white;
+}
+
+button {
+    all: unset;
+}
+
+main {
+    background-color: #1f1f1f;
+    border-color: #1f1f1f;
+}
+
+ul {
+    list-style-type: none;
+
+}
+
+.todoist-header {
+    display: flex;
+    height: 44px;
+    background-color: #282828;
+    align-items: center;
+    z-index: 200;
+    justify-content: center;
+    padding-left: 42px;
+    padding-right: 42px;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 15%);
+}
+
+.todoist-header-controls {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.todoist-header-controls-options {
+    margin-left: -2px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.todoist-sidebar {
+    box-sizing: border-box;
+    width: 410px;
+    height: calc(100vh - 44px);
+    padding-top: 30px;
+    padding-left: 35px;
+    position: fixed;
+    left: 0;
+}
+
+.todoist-main {
+    display: flex;
+    margin-left: 410px;
+    height: calc(100vh - 44px);
+    flex-direction: column;
+}
+
+.todoist-header-controls-options-buttons {
+    display: flex;
+    justify-content: center;
+    margin-right: 4px;
+    cursor: pointer;
+    align-items: center;
+    min-width: 28px;
+    min-height: 28px;
+}
+
+.todoist-header-controls-options-buttons:hover {
+    background-color: hsla(0,0%,100%,.2);
+    border-radius: 3px;
+}
+
+.todoist-header-controls-left-options-input {
+    margin-left: 2px;
+    position: relative;
+}
+
+.todoist-header-controls-left-options-input-find {
+    padding: 5px 0 5px 34px;
+    border-radius: 3px;
+    background: #363636;
+    border: 1px solid transparent;
+    color: #fff;
+    font-size: 13px;
+    width: 198px!important;
+}
+
+.todoist-header-controls-left-options-input-find:focus-visible {
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    color: #797979;
+    cursor: text;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 21px;
+}
+
+.profile-picture-header {
+    box-sizing: content-box;
+    border-radius: 100%;
+    height: 28px;
+    width: 28px;
+
+}
+
+.buttons-banner-margin {
+    margin-left: 5px;
+}
+
+.notifications-header {
+    margin-right: 16px;
+    margin-left: 5px;
+}
+
+.loading-app {
+    position: absolute;
+    z-index: 9999;
+    background: #1F1F1F;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fade-out {
+    animation: fadeOut 0.3s;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.navigation-ul {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.navigation-options-li {
+    display: flex;
+    padding: 5px 16px 5px 5px;
+    margin-right: 5px;
+}
+
+.navigation-options-li:hover {
+    border-radius: 3px;
+    background-color: #363636;
+    cursor: pointer;
+    transition: color .1s ease-in,background-color 0.3s ease-in;
+}
+
+.active {
+    background-color: #363636;
+    border-radius: 3px;
+}
+
+.navigation-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1px;
+}
+
+.navigation-item-icon {
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.header-task {
+    padding:36px 55px 0px;
+}
+
+.header-task-header {
+    padding-bottom: 8px;
+    border-bottom: 1px solid transparent;
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.todoist-tasks {
+    padding-left: 55px;
+    padding-right: 55px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.add-tasks-controller {
+    padding: 0 20px 0 0px;
+    padding: 8px 0;
+}
+
+.add-tasks-controller-button {
+    font-size: 14px;
+    color: grey;
+    display: flex;
+}
+
+.add-icon {
+    margin-right: 11px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    color: #de4c4a;
+}
+
+.add-tasks-controller-button:hover {
+    color: #de4c4a;
+    cursor: pointer;
+}
+
+.add-tasks-controller-button:hover > .add-icon {
+    color: #fff;
+    background: #de4c4a;
+    cursor: pointer;
+    transform: scale(.846);
+    border-radius: 50%;
+}
+
+.add-tasks-controller-button > span:nth-child(2) {
+    display: flex;
+    align-items: center;
+}
+
+.todoist-content {
+    margin-top: 0px;
+}
+
+.add-task-block {
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background: #171717;
+    border: 1px solid #2b2b2b;
+    border-radius: 5px;
+    align-items: center;
+    display: flex;
+}
+
+.add-task-input {
+    width: 100%;
+    background: #171717;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 0;
+    color:#fff;
+    padding: 0;
+    outline: none;
+}
+
+.add-task-button {
+    font-weight: 700;
+    font-size: 13px;
+    background: #de4c4a;
+    padding: 6px 12px 6px;
+    border: 1px solid #de4c4a;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-task-button:disabled {
+    opacity: .3;
+}
+
+.cancel-task-button {
+    font-size: 13px;
+    padding: 2px 5px;
+    cursor: pointer;
+    color: #797979;
+    font-weight: 500;
+}
+
+.cancel-task-button:hover {
+    text-decoration: underline;
+    color: #ffffffde;
+}
+
+.margin-options {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.tasks-form {
+    display: none;
+}
+
+.no-task {
+    position: relative;
+    max-width: 360px;
+    margin: auto;
+    text-align: center;
+}
+
+.no-task-img {
+    margin: auto;
+    width: 220px;
+    height: 200px;
+}
+
+.no-task-text {
+    display: grid;
+    font-size: 13px;
+    color: #ffffff99;
+}
+
+.no-task-text > span:nth-child(1) {
+    color: #ffffffde;
+    margin: 8px;
+    font-size: 16px;
+}
+
+.li-task {
+    font-size: 14px;
+    border-bottom: 1px solid #ffffff1a;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.div-control-delete {
+    float: right;
+    display: none;
+}
+
+.li-task:hover > .div-control-delete{
+    display: flex;
+}
+
+.button-control-delete {
+    color: #ffffff8f;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+}
+
+.button-control-delete:hover {
+    background-color: hsla(0,0%,100%,.2);
+    border-radius: 3px;
+}
+
+.counter_tasks {
+    color: #737373;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
