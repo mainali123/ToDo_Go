@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="../static/images/logo.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="../static/css/singup.css">
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <main>
+      <div class="left-side img">
+        <!-- <img src="../static/images/background.jpg" alt="background-image" /> -->
+      </div>
+      <div class="right-side content-container">
+        <img src="../static/images/logoo.png" alt="logo" class="logo" />
+        <form action="/signup" method="post">
+          <h1>welcome</h1>
+          <div class="row">
+          <div class="name">
+            <label for="first name">First name</label>
+            <input type="text" name="first name" id="firstName" placeholder="first name" />
+          </div>
+
+          <div class="name">
+            <label for="last name">Last name</label>
+            <input type="text" name="last name" id="last name" placeholder="last name">
+          </div>
+          </div>
+
+          <div class="name">
+            <label for="email">email</label>
+            <input type="text" name="email" id="email" placeholder="enter email">
+          </div>
+
+          <div class="name">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" placeholder="enter password">
+            <img src="../static/images/viuew.png" class="showpass" id="showpass" alt="show-password">
+          </div>
+
+          <div class="name">
+            <label for="password">confirm password</label>
+            <input type="password" name="Conpassword" id="password" placeholder="confirm password">
+            <img src="../static/images/viuew.png" class="showpass" id="showpass" alt="show-password">
+          </div>
+
+          <input type="submit" value="sign up" class="btn button">
+        </form>
+
+        <a href="" class="btn btton"><img src="../static/images/google.png" class="gglimg" alt="google"> or sign up with google</a>
+        <p>Already have a account? <a href="" class="link">sign in now</a></p>
+      </div>
+
+    </main>
+    <script src="../static/js/index.js" defer></script>
+  </body>
+</html>
