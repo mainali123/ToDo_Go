@@ -1,0 +1,170 @@
+@import '../css/style.css';
+
+main {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.content-container {
+  margin: 2.5rem;
+}
+
+.logo {
+  height: 45px;
+}
+
+label {
+  margin-top: 0.5em;
+  text-transform: capitalize;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.68);
+  letter-spacing: 1px;
+  line-height: 1.3rem;
+  text-align: justify;
+  padding: 0.3em 0 0.3em 0.5em;
+}
+
+label:first-of-type {
+  margin-top: 0;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.left-side {
+  width: 70%;
+  transition: width 0.3s ease;
+}
+
+.left-side {
+  background: url(../images/background.jpg) lightgray;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  aspect-ratio: 1/1;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5em;
+}
+
+#email,
+#password,
+#Conpassword {
+  width: 386px;
+}
+
+input[type='text'],
+input[type='password'] {
+  background-color: var(--input-box);
+  width: 179px;
+  height: 45px;
+  border: none;
+  border-radius: 10px;
+  padding: 1em;
+  text-transform: capitalize;
+  color: var(--text-color);
+}
+
+input[type='text'],
+input[type='password']:focus {
+  outline: none;
+}
+
+.showpass {
+  position: absolute;
+  right: 0;
+  right: 0.5em;
+  top: 2.5em;
+  height: 25px;
+  cursor: pointer;
+}
+
+.gglimg {
+  aspect-ratio: 1 / 1;
+  max-width: 51px;
+  height: 51px;
+  margin-right: 10px;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btton {
+  background-color: var(--gggle-color);
+}
+
+p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link {
+  cursor: pointer;
+  color: var(--btn-color);
+  text-transform: none;
+  font-weight: 300;
+  padding-left: 0.5em;
+  transition: all 0.3s ease;
+}
+
+.link:hover {
+  color: var(--gggle-color);
+  transition: color 0.3s ease;
+}
+
+@media only screen and (max-width: 745px) {
+  .left-side {
+    width: 0;
+    transition: width 0.3s ease;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  #email,
+  #password,
+  #Conpassword {
+    width: 330px;
+  }
+
+  input[type='text'],
+  input[type='password'] {
+    width: 330px;
+    height: 45px;
+    
+  }
+
+  .showpass {
+    position: absolute;
+    right: 0.5em;
+   
+  }
+
+  .button{
+    margin-top: 2rem;
+  }
+
+  .btn{
+    width: 330px;
+  }
+  
+  .name{
+    margin-bottom: 1rem;
+  }
+}
