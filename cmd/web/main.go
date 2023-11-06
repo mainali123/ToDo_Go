@@ -3,6 +3,7 @@ package main
 import (
 	"database/sql"
 	"flag"
+	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"os"
@@ -39,10 +40,18 @@ func main() {
 		database: &databaseConn{DB: db},
 	}
 
+	// Initialize Gin router
+	router := gin.Default()
+	// Load all the html files
+	router.LoadHTMLGlob("ui/html/*")
+
+	// call the routes function from routes.go to define routes
+	app.routes(router)
+
 	srv := &http.Server{
 		Addr:     *addr,
 		ErrorLog: errorLog,
-		Handler:  app.routes(),
+		Handler:  router,
 	}
 
 	infoLog.Printf("Starting server on localhost%s", *addr)

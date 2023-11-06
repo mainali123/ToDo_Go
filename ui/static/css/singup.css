@@ -16,7 +16,7 @@ main {
 
 label {
   margin-top: 0.5em;
-  text-transform: capitalize;
+  text-transform: none;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.68);
   letter-spacing: 1px;
@@ -69,7 +69,7 @@ input[type='password'] {
   border: none;
   border-radius: 10px;
   padding: 1em;
-  text-transform: capitalize;
+  text-transform: none;
   color: var(--text-color);
 }
 

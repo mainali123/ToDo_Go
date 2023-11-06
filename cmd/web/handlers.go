@@ -3,29 +3,30 @@ package main
 import (
 	"database/sql"
 	"errors"
+	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
 )
 
 // index is the handler for the home page of the website
-func (app *application) index(w http.ResponseWriter, r *http.Request) {
+func (app *application) index(c *gin.Context) {
 	t, err := template.ParseFiles("./ui/html/index.html")
 	if err != nil {
-		app.serverError(w, err)
+		app.serverError(c.Writer, err)
 		return
 	}
-	err = t.Execute(w, nil)
+	err = t.Execute(c.Writer, nil)
 	if err != nil {
-		app.serverError(w, err)
+		app.serverError(c.Writer, err)
 		return
 	}
 }
 
 // login is the handler for the user logging in for the first time. It takes care of inserting the user's value in the database
-func (app *application) login(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		inputEmail := r.FormValue("email")
-		inputPassword := r.FormValue("password")
+func (app *application) login(c *gin.Context) {
+	if c.Request.Method == http.MethodPost {
+		inputEmail := c.PostForm("email")
+		inputPassword := c.PostForm("password")
 
 		// Check if the email exists
 		doesUserExists := "SELECT Username FROM Users WHERE Email = ?"
@@ -38,10 +39,10 @@ func (app *application) login(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			if errors.Is(err, sql.ErrNoRows) {
 				// User doesn't exists
-				http.Redirect(w, r, "/signup", 301)
+				c.Redirect(http.StatusMovedPermanently, "/signup")
 			} else {
 				// Handle error
-				http.Error(w, "Error while logging in", 500)
+				c.String(http.StatusInternalServerError, "Error while logging in")
 			}
 		} else {
 			// User exists
@@ -50,33 +51,24 @@ func (app *application) login(w http.ResponseWriter, r *http.Request) {
 				app.errorLog.Fatal(err.Error())
 			}
 			if psw == inputPassword {
-				http.Redirect(w, r, "/homepage", 301)
+				c.Redirect(http.StatusMovedPermanently, "/homepage")
 			} else {
-				http.Error(w, "Wrong password", 500)
+				c.String(http.StatusInternalServerError, "Wrong password")
 			}
 		}
 	} else {
-		t, err := template.ParseFiles("./ui/html/login.html")
-		if err != nil {
-			app.serverError(w, err)
-			return
-		}
-		err = t.Execute(w, nil)
-		if err != nil {
-			app.serverError(w, err)
-			return
-		}
+		c.HTML(http.StatusOK, "login.html", nil)
 	}
 }
 
 // signup is the handler for the user signing up for the first time. It takes care of validating the user's value and redirect to the homepage page of the website
-func (app *application) signup(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodPost {
-		firstname := r.FormValue("firstname")
-		lastname := r.FormValue("lastname")
-		email := r.FormValue("email")
-		password := r.FormValue("password")
-		passwordVerification := r.FormValue("password_verification")
+func (app *application) signup(c *gin.Context) {
+	if c.Request.Method == http.MethodPost {
+		firstname := c.PostForm("firstname")
+		lastname := c.PostForm("lastname")
+		email := c.PostForm("email")
+		password := c.PostForm("password")
+		passwordVerification := c.PostForm("password_verification")
 		username := firstname + lastname
 
 		ifUserExists := "SELECT Username FROM Users WHERE Email = ?"
@@ -93,47 +85,39 @@ func (app *application) signup(w http.ResponseWriter, r *http.Request) {
 				// User doesn't exists
 				if password != passwordVerification {
 					// display error in the browser
-					http.Error(w, "Passwords don't match", 500)
+					c.String(http.StatusInternalServerError, "Password don't match")
 					return
 				}
 
 				app.database.createUser(username, email, password, firstname, lastname, "./ui/static/avatar/default_avatar.png", app)
-				http.Redirect(w, r, "/login", 301)
+				c.Redirect(http.StatusMovedPermanently, "/login")
 
 			} else {
 				// User exists
-				http.Redirect(w, r, "/login", 301)
+				c.Redirect(http.StatusMovedPermanently, "/login")
 			}
 		} else {
 			// display error in the browser
-			http.Error(w, "Error while creating user", 500)
+			c.String(http.StatusInternalServerError, "Error while creating user")
 			return
 		}
 
 	} else {
-		t, err := template.ParseFiles("./ui/html/signup.html")
-		if err != nil {
-			app.serverError(w, err)
-			return
-		}
-		err = t.Execute(w, nil)
-		if err != nil {
-			app.serverError(w, err)
-			return
-		}
+		c.HTML(http.StatusOK, "signup.html", nil)
+
 	}
 }
 
 // homepage is the handler for the user's homepage. It takes care of displaying the user's information and the user's tasks
-func (app *application) homepage(w http.ResponseWriter, r *http.Request) {
+func (app *application) homepage(c *gin.Context) {
 	t, err := template.ParseFiles("./ui/html/homepage.html")
 	if err != nil {
-		app.serverError(w, err)
+		app.serverError(c.Writer, err)
 		return
 	}
-	err = t.Execute(w, nil)
+	err = t.Execute(c.Writer, nil)
 	if err != nil {
-		app.serverError(w, err)
+		app.serverError(c.Writer, err)
 		return
 	}
 }
