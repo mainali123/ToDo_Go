@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="../static/css/login_aakash.css" />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css?family=Laila" />
+
+		<link
+			rel="shortcut icon"
+			href="../static/images/todo.svg"
+			type="image/x-icon" />
+		<link
+			rel="stylesheet"
+			href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css" />
+
+		<title>Login - Website Title</title>
+	</head>
+	<body>
+		<section id="loginForm">
+			<div class="max-width">
+				<div class="left-side"></div>
+				<div class="right-side">
+					<div class="logo-container">
+						<p class="title">TO-DO WEBAPP</p>
+						<img src="../static/images/todo.svg" alt="TODO logo" class="logo" />
+					</div>
+					<div class="alert-box-dialog">
+						<i class="fa-solid fa-circle-exclamation"></i>
+						<p class="alert-message-dialog">Invalid username or password</p>
+					</div>
+					<div class="heading-wrapper">
+						<h1>Welcome Back !</h1>
+						<p>Please login to your account to continue</p>
+					</div>
+					<form action="" class="login-form">
+						<div class="input-field">
+							<i class="fas fa-envelope"></i>
+							<input
+								type="email"
+								placeholder=""
+								class="login-email"
+								name="email" />
+							<label class="placeholder">Email</label>
+						</div>
+						<div class="input-field">
+							<i class="fas fa-lock"></i>
+							<input
+								type="password"
+								placeholder=""
+								class="login-password"
+								name="password" />
+							<label class="placeholder">Password</label>
+							<button class="password-show" type="button">
+								<i class="fa-solid fa-eye"></i>
+							</button>
+						</div>
+						<div class="forget-link">
+							<label for="rememberMe" class="custom-checkbox-label">
+								<input
+									type="checkbox"
+									name="rememberMe"
+									id="rememberMe"
+									class="custom-checkbox"
+									checked />
+								<span class="custom-checkbox-box"></span>
+								<p>Remember Me</p>
+							</label>
+							<a href="" class="forget-password">Forgot Password?</a>
+						</div>
+						<button type="submit" class="primary-btn login-btn">Log in</button>
+					</form>
+					<div class="social-login">
+						<a href="" class="social-login-btn">
+							<i class="fab fa-google"></i>
+						</a>
+						<a href="" class="social-login-btn">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="" class="social-login-btn">
+							<i class="fab fa-github"></i>
+						</a>
+					</div>
+					<div class="create-account">
+						<hr />
+						<p>
+							Don't have an account?&nbsp;&nbsp;<a href="" class="signup-link"
+								>Create one</a
+							>
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+	<script src="../static/js/login.js"></script>
+</html>
