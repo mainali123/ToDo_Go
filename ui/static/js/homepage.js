@@ -162,6 +162,10 @@ inputTask.addEventListener('input', function()
 
 addTask.addEventListener('click', function() {
     if(!inputTask.value) return;
+
+    // GET the json value from
+
+
     createTask(inputTask.value);
 });
 
