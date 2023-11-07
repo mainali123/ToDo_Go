@@ -3,7 +3,7 @@
 	padding: 0;
 	box-sizing: border-box;
 	/* outline: 1px dotted red; */
-	font-family: Ubuntu;
+	font-family: Laila;
 }
 
 body {
@@ -28,7 +28,6 @@ hr {
 	align-items: center;
 	gap: 10px;
 	padding: 10px 20px;
-	border-radius: 1rem;
 	border-left: 5px solid rgb(207, 0, 0);
 	background-color: #ff9f9fe8;
 	visibility: hidden;
@@ -41,8 +40,8 @@ hr {
 
 #loginForm {
 	.max-width {
-		width: 60%;
-		height: 70%;
+		width: 60vw;
+		height: 70vh;
 		position: absolute;
 		margin: auto;
 		top: auto;
@@ -55,6 +54,7 @@ hr {
 		align-items: center;
 		justify-content: center;
 		padding: 10px;
+		flex-shrink: 2;
 	}
 	.left-side {
 		background: linear-gradient(
@@ -82,7 +82,7 @@ hr {
 		width: 100%;
 		height: 6%;
 		display: flex;
-		justify-content: flex-start;
+		justify-content: flex-end;
 		align-items: center;
 		gap: 10px;
 	}
@@ -147,6 +147,7 @@ hr {
 		transform: translateY(-25px) translateX(-10px);
 		font-size: 0.8rem;
 		color: #bf4f51;
+		background-color: #fff;
 	}
 	.input-field i {
 		font-size: 1.2rem;
@@ -156,7 +157,6 @@ hr {
 		font-size: 1rem;
 		position: absolute;
 		left: 50px;
-		background-color: #fff;
 		transition: all 0.3s ease-in-out;
 		padding: 5px;
 		pointer-events: none;
@@ -245,7 +245,7 @@ hr {
 
 .custom-checkbox:checked + .custom-checkbox-box::before {
 	content: "\f00c";
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	color: #ffffff;
 	font-weight: 700;
 }
@@ -257,4 +257,22 @@ input[type="checkbox"] {
 	justify-content: center;
 	align-items: center;
 	gap: 5px;
+}
+
+@media screen and (max-width: 768px) {
+	#loginForm {
+		.max-width {
+			width: 90vw;
+			height: 90vh;
+		}
+		.left-side {
+			display: none;
+		}
+		.right-side {
+			width: 100%;
+		}
+		.login-form {
+			width: 100%;
+		}
+	}
 }

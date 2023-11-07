@@ -18,9 +18,10 @@ showPassword.forEach((show) => {
 // alert message script
 
 const alert = document.querySelector(".alert-box-dialog");
+const alertMessage = document.querySelector(".alert-message-dialog");
 
 function showAlert(message) {
-	alert.innerHTML = message;
+	alertMessage.innerHTML = message;
 	alert.style.visibility = "visible";
 	alert.style.opacity = "1";
 
@@ -39,7 +40,11 @@ const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	if (email.value === "" || password.value === "") {
+	if (email.value === "") {
+		email.focus();
+		showAlert("Please fill all the fields");
+	} else if (password.value === "") {
+		password.focus();
 		showAlert("Please fill all the fields");
 	} else {
 		showAlert("The login system is not ready yet");
