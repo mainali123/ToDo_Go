@@ -48,7 +48,7 @@ hr {
 		background: #fff;
 		border-radius: 10px;
 		box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-		border-radius: 30px;
+		border-radius: 3rem;
 		overflow: hidden;
 		display: flex;
 		align-items: center;
@@ -65,11 +65,11 @@ hr {
 			url("../images/login.jpg") no-repeat center center/cover;
 		width: 100%;
 		height: 100%;
-		border-top-left-radius: 20px;
-		border-bottom-left-radius: 20px;
+		border-top-left-radius: calc(3rem - 10px);
+		border-bottom-left-radius: calc(3rem - 10px);
 	}
 	.right-side {
-		width: 100%;
+		width: 90%;
 		height: 100%;
 		padding: 10px;
 		display: flex;
