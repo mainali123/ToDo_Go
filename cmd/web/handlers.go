@@ -6,7 +6,15 @@ import (
 	"github.com/gin-gonic/gin"
 	"html/template"
 	"net/http"
+	"time"
 )
+
+var USEREMAIL string
+var USERID int
+
+func (app *application) error404(c *gin.Context) {
+	c.HTML(http.StatusOK, "error404.html", nil)
+}
 
 // index is the handler for the home page of the website
 func (app *application) index(c *gin.Context) {
@@ -51,6 +59,7 @@ func (app *application) login(c *gin.Context) {
 				app.errorLog.Fatal(err.Error())
 			}
 			if psw == inputPassword {
+				USEREMAIL = inputEmail
 				c.Redirect(http.StatusMovedPermanently, "/homepage")
 			} else {
 				c.String(http.StatusInternalServerError, "Wrong password")
@@ -120,4 +129,72 @@ func (app *application) homepage(c *gin.Context) {
 		app.serverError(c.Writer, err)
 		return
 	}
+}
+
+// projectStarterSetup is the handler for the user's first time login. It takes care of adding the default projects to the user's database
+func (app *application) projectStarterSetup(c *gin.Context) {
+
+	// First time setup
+	isFirstTime := "SELECT NewUser FROM Projects"
+	// if the user is logging in for the first time the NewUser value is set to 0 in the database
+	row := app.database.DB.QueryRow(isFirstTime)
+
+	var newUser int
+	err := row.Scan(&newUser)
+
+	if err != nil {
+		app.errorLog.Fatal(err.Error())
+	}
+	if newUser == 0 {
+		// Logged in for the first time
+		// Get the user's id
+		getUserId := "SELECT UserID FROM Users WHERE Email = ?"
+		row := app.database.DB.QueryRow(getUserId, USEREMAIL)
+
+		var userId int
+		err := row.Scan(&userId)
+		if err != nil {
+			app.errorLog.Fatal(err.Error())
+		}
+		USERID = userId
+		app.database.firstTimeSetupProjects(userId, app)
+
+		// Set the NewUser value to 1
+		setNewUser := "UPDATE Projects SET NewUser = 1"
+		_, err = app.database.DB.Exec(setNewUser)
+		if err != nil {
+			app.errorLog.Fatal(err.Error())
+		}
+	}
+}
+
+// tasksHandler
+func (app *application) taskHandler(c *gin.Context) {
+	type task struct {
+		TaskTitle       string    `json:"taskTitle"`
+		TaskDescription string    `json:"taskDescription"`
+		DueDateTime     time.Time `json:"dueDateTime"`
+		Priority        string    `json:"priority"`
+		TaskStatus      string    `json:"taskStatus"`
+		ProjectId       int       `json:"projectId"`
+		UserId          int       `json:"userId"`
+	}
+
+	tasks := task{
+		TaskTitle:       "",
+		TaskDescription: "",
+		DueDateTime:     time.Now(),
+		Priority:        "",
+		TaskStatus:      "",
+		ProjectId:       0,
+		UserId:          USERID,
+	}
+
+	if err := c.ShouldBindJSON(&tasks); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": err.Error(),
+		})
+		return
+	}
+	c.JSON(http.StatusOK, tasks)
 }

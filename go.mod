@@ -1,4 +1,4 @@
-module todo
+module mainali123/ToDo_Go
 
 go 1.21
 

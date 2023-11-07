@@ -14,6 +14,11 @@ func (app *application) routes(router *gin.Engine) {
 	router.POST("/signup", app.signup)
 	router.GET("/homepage", app.homepage)
 
+	// Define the API route handlers
+	router.GET("/taskApi/get", app.taskHandlerGet)
+	router.POST("/taskApi/post", app.taskHandler)
+	router.PUT("/taskAPI/put", nil)
+
 	// Define the static file server middleware
 	router.Static("/static", "./ui/static/")
 

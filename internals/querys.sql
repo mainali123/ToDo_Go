@@ -12,6 +12,7 @@ CREATE TABLE Users (
 CREATE TABLE Projects (
                           ProjectID INT AUTO_INCREMENT PRIMARY KEY,
                           ProjectName VARCHAR(255) NOT NULL,
+                          NewUser INT NOT NULL DEFAULT 1,
                           UserID INT,
                           FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
